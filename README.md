@@ -10,10 +10,13 @@ Xu Yan, Jiantao Gao, Jie Li, Ruimao Zhang, [Zhen Li*](https://mypage.cuhk.edu.cn
 
 If you find our work useful in your research, please consider citing:
 ```
-@InProceedings{yan2021sparse,
+@inproceedings{yan2021sparse,
   title={Sparse Single Sweep LiDAR Point Cloud Segmentation via Learning Contextual Shape Priors from Scene Completion},
-  author={Yan, Xu and Gao, Jiantao and Li, Jie and Zhang, Ruimao, and Li, Zhen and Huang, Rui and Cui, Shuguang},
-  journal={AAAI Conference on Artificial Intelligence ({AAAI})},
+  author={Yan, Xu and Gao, Jiantao and Li, Jie and Zhang, Ruimao and Li, Zhen and Huang, Rui and Cui, Shuguang},
+  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume={35},
+  number={4},
+  pages={3101--3109},
   year={2021}
 }
 ```
@@ -37,7 +40,7 @@ Installation instructions for Ubuntu 16.04:
 ### Data Preparation
 * SemanticKITTI and SemanticPOSS datasets can be found in [semantickitti-page](http://semantic-kitti.org/dataset.html#download) and [semanticposs-page](http://www.poss.pku.edu.cn/semanticposs.html). 
 * Download the files related to **semantic segmentation** and extract everything into the same folder. 
-* Use [voxelizer](https://github.com/jbehley/voxelizer) generate ground truths of **semantic scene completion**, where following parameters are used. We provide pre-processed SemanticPOSS SSC labels [here](https://drive.google.com/file/d/1O2Tg-r5egVPLNboRwd321sobJvgmFUvI/view?usp=sharing).
+* Use [voxelizer](https://github.com/jbehley/voxelizer) generate ground truths of **semantic scene completion**, where following parameters are used. We provide pre-processed SemanticPOSS SSC labels [here](https://drive.google.com/file/d/1AGagbRwQe3aR8liaC4YnkMW1iwSCLvvN/view?usp=sharing).
 ```angular2
 min range: 2.5
 max range: 70
@@ -62,6 +65,7 @@ SemanticKITTI(POSS)
 
 ```
 * Note that the data for official SemanticKITTI SSC benchmark only contains 1/5 of the whole sequence and they provide all extracted SSC data for the training set [here](http://semantic-kitti.org/assets/data_odometry_voxels_all.zip).
+* (**New**) In this repo, we use old version of SemanticKITTI, and there is a bug of generating SSC data contains a wrong shift on upwards direction (see [issue](https://github.com/PRBonn/semantic-kitti-api/issues/49)). Therefore, we add an additional shifting to align their old version dataset [here](https://github.com/yanx27/JS3C-Net/blob/3433634c9cda7e8ed5c623e0ae9a9f2f2c5cee09/test_kitti_ssc.py#L94), and if you use the newest version of data, you can delete it. Also, you can check the alignment ratio by using `--debug`. 
 
 ### SemanticKITTI
 #### Training
